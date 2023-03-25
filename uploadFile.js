@@ -38,10 +38,10 @@ async function uploadFile(url, forms, fileForms, rawData) {
 }
 
 function objToHeaderStrMap(obj){
-  let strMap = new Map();
+  let strMap = new Object();
   for (let k of Object.keys(obj)) {
     if(str1.startsWith('_')))
-      strMap.set(k.substring(1),obj[k]);
+      strMap[k.substring(1)] = obj[k];
   }
   return strMap;
 }
