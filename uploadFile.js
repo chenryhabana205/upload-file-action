@@ -17,23 +17,33 @@ function buildForm(forms, fileForms) {
     return form
 }
 
-async function getFormHeaders (form) {
+async function getFormHeaders (form, defHeader) {
   const getLen = promisify(form.getLength).bind(form);
   const len = await getLen();
+  
   return {
-    ...form.getHeaders(),
+    ...form.getHeaders(defHeader),
     'Content-Length': len
   }
 }
 
-async function uploadFile(url, forms, fileForms) {
+async function uploadFile(url, forms, fileForms, rawData) {
     console.log(url);
     console.log(forms);
     console.log(fileForms);
     const form = buildForm(forms, fileForms);
-    const headers = await getFormHeaders(form);
+    const headers = await getFormHeaders(form, objToHeaderStrMap(rawData));
     console.log(headers);
     return axios.post(url, form, {headers: headers,maxContentLength: Infinity})
+}
+
+function objToHeaderStrMap(obj){
+  let strMap = new Map();
+  for (let k of Object.keys(obj)) {
+    if(str1.startsWith('_')))
+      strMap.set(k,obj[k]);
+  }
+  return strMap;
 }
 
 
