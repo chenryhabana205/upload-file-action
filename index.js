@@ -16,7 +16,7 @@ async function main() {
     console.log(fileForms);
 
     // http request to external API
-    const response = await uploadFile(url, formsMap, fileFormsMap);
+    const response = await uploadFile(url, formsMap, fileFormsMap, forms);
 
     const statusCode = response.status;
     const data = response.data;
