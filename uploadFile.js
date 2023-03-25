@@ -32,7 +32,7 @@ async function uploadFile(url, forms, fileForms, rawData) {
     console.log(forms);
     console.log(fileForms);
     const form = buildForm(forms, fileForms);
-    const headers = await getFormHeaders(form, objToHeaderStrMap(rawData));
+    const headers = await getFormHeaders(form, objToHeaderStrMap(forms));
     console.log(headers);
     return axios.post(url, form, {headers: headers,maxContentLength: Infinity})
 }
