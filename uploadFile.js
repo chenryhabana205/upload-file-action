@@ -18,6 +18,7 @@ function buildForm(forms, fileForms) {
 }
 
 async function getFormHeaders (form, defHeader) {
+  console.log("headerObj", defHeader);
   const getLen = promisify(form.getLength).bind(form);
   const len = await getLen();
   
